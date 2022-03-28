@@ -36,6 +36,18 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+  
+  utter_wait:
+  -text: "I will contact the office rightaway. Please wait a moment."
+  
+  utter_water:
+  - text: "I, the bot, has contacted the office. Water will be delivered to your room soon"
+  
+  utter_tissue:
+  - text: "Toilet papers will be delivered right away!"
+  
+  utter_plastic_bag:
+  - text: "We will deliver the plastic bags soon
 
 session_config:
   session_expiration_time: 60
