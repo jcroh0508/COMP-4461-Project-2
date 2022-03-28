@@ -90,3 +90,56 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: want_food
+  examples: |
+    - i want to order lunch
+    - i want to have lunch
+    - want to eat dinner
+    - want to eat breakfast
+    - i am hungry
+
+- intent: inform
+# For responses to questions from bot
+# response like i want to eat (food), i ate (this)
+  examples: |
+    -
+    
+- intent: out_of_scope
+  examples: |
+    - that's not what I want to do
+    - wait stop
+    - you're no help
+    - this is no help at all
+    - how old are you
+    - I want to order a pizza
+    - tell me the weather
+    - this isn't working
+    - I already told you that
+    - don't like that
+    - I don't want to tell you that
+    - none of your business
+    - that's not right
+    - stop asking
+    - nevermind
+    - I want to do something else
+    - I changed my mind
+
+- intent: thankyou
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
+    - thanks
+
+- intent: already_paid
+  examples: |
+    - I just paid
+    - I transferred the money
+    - I paid for the food
+
+- intent: ask_when_deliver
+  examples: |
+    - When will the food arrive?
+    - How long till the food arrives?

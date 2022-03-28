@@ -2,6 +2,12 @@ version: "2.0"
 
 intents:
   - greet
+  - want_food
+  - inform
+  - ask_when_deliver
+  - thankyou
+  - out_of_scope
+  - already_paid
   - goodbye
   - affirm
   - deny
