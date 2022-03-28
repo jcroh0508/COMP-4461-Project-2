@@ -144,14 +144,26 @@ nlu:
     - When will the food arrive?
     - How long till the food arrives?
 
-- intent: want_supplements
+- intent: want_water
   examples: |
     - I want more water
-    - I want more tissue papers
+    
+- intent: want_tissue
+  examples: |
+    - I want more tissue paper
+
+- intent: want_plastic_bag
+  examples: |
     - I want more plastic bags
 
-- intent: ask_supplements
+- intent: ask_water
   examples: |
     - May I ask for more water?
+    
+- intent: ask_tissue
+  examples: |
     - May I ask for more tissue papers?
+
+- intent: ask_plastic_bag
+  examples: |
     - May I ask for more plastic bags?
