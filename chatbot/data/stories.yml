@@ -29,20 +29,28 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: ask water path
-  steps:
-  - intent: ask_water
-  - action: utter_wait
-  - action: utter_water
+# - story: ask water path
+#   steps:
+#   - intent: ask_water
+#   - action: utter_wait
+#   - action: utter_water
 
-- story: ask tissue path
-  steps:
-  - intent: ask_tissue
-  - action: utter_wait
-  - action: utter_tissue
+# - story: ask tissue path
+#   steps:
+#   - intent: ask_tissue
+#   - action: utter_wait
+#   - action: utter_tissue
   
-- story: ask plastic bag path
+# - story: ask plastic bag path
+#   steps:
+#   - intent: ask_plastic_bag
+#   - action: utter_wait
+#   - action: utter_water
+
+- story: ask for item path
   steps:
-  - intent: ask_plastic_bag
+  - intent: ask_for_item
+    entities:
+    - request_item: water
   - action: utter_wait
-  - action: utter_water
+  - action: utter_on_the_way

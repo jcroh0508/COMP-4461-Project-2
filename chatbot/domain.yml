@@ -14,9 +14,17 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_water
-  - ask_tissue
-  - ask_plastic_bag
+  - ask_for_item
+  # - ask_water
+  # - ask_tissue
+  # - ask_plastic_bag
+
+entities:
+- request_item
+
+slots:
+  request_item:
+    type: text
 
 responses:
   utter_greet:
@@ -41,15 +49,17 @@ responses:
   utter_wait:
   - text: I will contact the office rightaway. Please wait a moment.
   
-  utter_water:
-  - text: I, the bot, has contacted the office. Water will be delivered to your room soon
+  # utter_water:
+  # - text: I, the bot, has contacted the office. Water will be delivered to your room soon
   
-  utter_tissue:
-  - text: Toilet papers will be delivered right away!
+  # utter_tissue:
+  # - text: Toilet papers will be delivered right away!
   
-  utter_plastic_bag:
-  - text: We will deliver the plastic bags soon
+  # utter_plastic_bag:
+  # - text: We will deliver the plastic bags soon
 
+  utter_on_the_way:
+  - text: I have contacted the office. The {request_item} will be delivered soon.
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
