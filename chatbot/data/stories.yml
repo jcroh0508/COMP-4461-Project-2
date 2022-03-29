@@ -1,69 +1,175 @@
 version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hello
 
-stories:
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+- intent: want_food
+  examples: |
+    - i want to order lunch
+    - i want to have lunch
+    - want to eat dinner
+    - want to eat breakfast
+    - i am hungry
+    - I feel hungry
 
-# - story: ask water path
-#   steps:
-#   - intent: ask_water
-#   - action: utter_wait
-#   - action: utter_water
+- intent: give_restaurant
+  examples: |
+    - [Subway](restaurant)
+    - [LG1](restaurant)
+    - [LG7](restaurant)
+    - I want to order from [LG1](restaurant)
+    - I want to eat from [LG7](restaurant)
+    - I want to eat some [Subway](restaurant)
+    - I want to eat some [American Diner](restaurant)
+    - I wish to eat some [Ebeneezer's](restaurant)
 
-# - story: ask tissue path
-#   steps:
-#   - intent: ask_tissue
-#   - action: utter_wait
-#   - action: utter_tissue
-  
-# - story: ask plastic bag path
-#   steps:
-#   - intent: ask_plastic_bag
-#   - action: utter_wait
-#   - action: utter_water
+- intent: inform
+  examples: |
+    - [1](dish)
+    - I want to get [2](dish)
+    - will eat [4](dish)
+    - order [3](dish)
+    - [1](drink)
+    - I want to get [2](drink)
+    - will drink [4](drink)
+    - order [3](drink)
+    - [1](payment_method)
+    - Pay with [FPS](payment_method)
+    - pay by [credit card](payment_method)
+    - use [Alipay](payment_method)
+    - I want to pay by [wechat pay](payment_method)
 
-- story: ask for item path
-  steps:
-  - intent: ask_for_item
-    entities:
-    - request_item: water
-  - action: utter_wait
-  - action: utter_on_the_way
+- intent: out_of_scope
+  examples: |
+    - that's not what I want to do
+    - wait stop
+    - you're no help
+    - this is no help at all
+    - how old are you
+    - I want to order a pizza
+    - tell me the weather
+    - this isn't working
+    - I already told you that
+    - don't like that
+    - I don't want to tell you that
+    - none of your business
+    - that's not right
+    - stop asking
+    - nevermind
+    - I want to do something else
+    - I changed my mind
 
-#- story: ask for a game path
-#  steps:
-#  - intent: express_boredom
-#  - action: utter_guessing_game
-#  - intent: affirm
-#  - action: utter_game_rules
-#  - action: action_create_answer
-#  - action: guessing_form
-#  - active_loop: guessing_form
-#  - slot_was_set:
-#    - requested_slot: null
-#  - active_loop: null
+- intent: thankyou
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
+    - thanks
+
+- intent: already_paid
+  examples: |
+    - I just paid
+    - I transferred the money
+    - I paid for the food
+
+- intent: ask_when_deliver
+  examples: |
+    - When will the food arrive?
+    - How long till the food arrives?
+
+- intent: ask_for_item
+  examples: |
+    - I want a [plastic bag](request_item)
+    - I want more [water](request_item)
+    - May I ask for more [water](request_item)?
+    - I want [tissues](request_item)
+    - I need more [tissue paper](request_item)
+    - I need some [plastic bags](request_item)
+
+- intent: ask_medical_help
+  examples: |
+    - I feel like I am having some symptoms
+    - I am feeling sick
+    - Feeling sick
+    - feeling sick
+    - Not feeling well
+
+- intent: answer_symptoms
+  examples: |
+    - I am [coughing](symptoms)
+    - I have a [headache](symptoms)
+    - [headache](symptoms)
+    - I have a [sore throat](symptoms)
+    - [sore throat](symptoms)
+    - I have a [fever](symptoms)
+    - [fever](symptoms)
+
+- intent: answer_result
+  examples: |
+    - I am tested [positive](test_result)
+    - I am tested [negative](test_result)
+    - [positive](test_result)
+    - [negative](test_result)
+
+- intent: number_scale
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5

@@ -12,6 +12,15 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Submit Food Order Form
+  condition:
+  - active_loop: food_order_form
+  steps:
+  - action: food_order_form
+  - active_loop: null
+  - action: action_submit_food_order
+  - action: utter_slots_values
+
 - rule: Guessing game if the user is bored
   steps:
     - intent: express_boredom

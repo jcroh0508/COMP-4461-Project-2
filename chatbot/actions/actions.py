@@ -52,3 +52,52 @@ class ValidateGuess(FormValidationAction):
             else:
                 dispatcher.utter_message(text = "That is incorrect.")
                 return{'guess': None}
+
+
+class ActionGetAvailableMeals(Action):
+
+    def name(self) -> Text:
+        return "action_get_available_meals"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # TODO: Get slot restaurant and filter returned meals by restaurant
+
+        dishes = [{"id": 1, "name": "rice"}, {"id": 2, "name": "pasta"}]
+        drinks = [{"id": 1, "name": "tea"}, {"id": 2, "name": "coke"}]
+
+        message = "Dishes:\n"
+        for dish in dishes:
+            message += f'({dish.get("id")}) {dish.get("name")}\n'
+
+        message += "Drinks:\n"
+        for drink in drinks:
+            message += f'({drink.get("id")}) {drink.get("name")}\n'
+
+        dispatcher.utter_message(text=message)
+
+        return []
+
+
+class ActionSubmitFoodOrder(Action):
+
+    def name(self) -> Text:
+        return "action_submit_food_order"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # TODO: Get slot restaurant and do some verification of meal
+        # TODO: Generate payment link based on payment method and set a payment link slot
+
+        restaurant = tracker.get_slot("restaurant")
+        dish = tracker.get_slot("dish")
+        drink = tracker.get_slot("drink")
+        payment_method = tracker.get_slot("payment_method")
+
+        dispatcher.utter_message(text="Thanks. Your order has been received")
+
+        return [SlotSet("payment_link", "TODO")]
