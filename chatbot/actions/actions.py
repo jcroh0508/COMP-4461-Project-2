@@ -27,6 +27,7 @@ from rasa_sdk.events import SlotSet
 #
 #         return []
 
+
 class ActionGetAvailableMeals(Action):
 
     def name(self) -> Text:
@@ -44,12 +45,15 @@ class ActionGetAvailableMeals(Action):
         message = "Dishes:\n"
         for dish in dishes:
             message += f'({dish.get("id")}) {dish.get("name")}\n'
+
+        message += "Drinks:\n"
         for drink in drinks:
             message += f'({drink.get("id")}) {drink.get("name")}\n'
 
         dispatcher.utter_message(text=message)
 
         return []
+
 
 class ActionSubmitFoodOrder(Action):
 
@@ -67,8 +71,6 @@ class ActionSubmitFoodOrder(Action):
         dish = tracker.get_slot("dish")
         drink = tracker.get_slot("drink")
         payment_method = tracker.get_slot("payment_method")
-
-        
 
         dispatcher.utter_message(text="Thanks. Your order has been received")
 

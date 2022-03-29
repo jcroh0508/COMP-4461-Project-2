@@ -6,49 +6,11 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-# - story: ask water path
-#   steps:
-#   - intent: ask_water
-#   - action: utter_wait
-#   - action: utter_water
-
-# - story: ask tissue path
-#   steps:
-#   - intent: ask_tissue
-#   - action: utter_wait
-#   - action: utter_tissue
-  
-# - story: ask plastic bag path
-#   steps:
-#   - intent: ask_plastic_bag
-#   - action: utter_wait
-#   - action: utter_water
 
 - story: ask for item path
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_for_item
     entities:
     - request_item: water
@@ -57,6 +19,8 @@ stories:
 
 - story: food_order_happy_path
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: want_food
   - action: utter_ask_restaurant
   - intent: give_restaurant
@@ -66,6 +30,8 @@ stories:
 
 - story: food_order_cancel
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: want_food
   - action: utter_ask_restaurant
   - intent: give_restaurant
@@ -81,6 +47,8 @@ stories:
 
 - story: food_order_continue
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: want_food
   - action: utter_ask_restaurant
   - intent: give_restaurant
@@ -92,23 +60,32 @@ stories:
   - intent: affirm
   - action: food_order_form
 
-# - story: interactive_story
-#   steps:
-#   - intent: want_food
-#   - action: action_get_available_meals
-#   - action: food_order_form
-#   - active_loop: food_order_form
-#   - slot_was_set:
-#     - requested_slot: dish
-#   - slot_was_set:
-#     - dish: 1
-#   - slot_was_set:
-#     - requested_slot: drink
-#   - slot_was_set:
-#     - drink: 2
-#   - slot_was_set:
-#     - requested_slot: payment_method
-#   - slot_was_set:
-#     - payment_method: FPS
-#   - active_loop: null
-#   - action: action_submit_food_order
+- story: interactive_story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: want_food
+  - action: utter_ask_restaurant
+  - intent: give_restaurant
+    entities:
+    - restaurant: Subway
+  - slot_was_set:
+    - restaurant: Subway
+  - action: action_get_available_meals
+  - action: food_order_form
+  - active_loop: food_order_form
+  - slot_was_set:
+    - requested_slot: dish
+  - slot_was_set:
+    - dish: '1'
+  - slot_was_set:
+    - requested_slot: drink
+  - slot_was_set:
+    - dish: '2'
+  - slot_was_set:
+    - requested_slot: payment_method
+  - slot_was_set:
+    - dish: FPS
+  - active_loop: null
+  - action: action_submit_food_order
+  - action: utter_slots_values

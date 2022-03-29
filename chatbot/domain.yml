@@ -1,93 +1,65 @@
-version: "2.0"
-
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - want_food
-  - give_restaurant
-  - inform
-  - ask_when_deliver
-  - thankyou
-  - out_of_scope
-  - already_paid
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - ask_for_item
-  # - ask_water
-  # - ask_tissue
-  # - ask_plastic_bag
-
+- greet
+- want_food
+- give_restaurant
+- inform
+- ask_when_deliver
+- thankyou
+- out_of_scope
+- already_paid
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- ask_for_item
 entities:
-- request_item
-- restaurant
 - dish
 - drink
 - payment_method
-
+- request_item
+- restaurant
 slots:
   request_item:
     type: text
+    influence_conversation: true
   dish:
     type: text
+    influence_conversation: true
   drink:
     type: text
+    influence_conversation: true
   payment_method:
     type: text
+    influence_conversation: true
   restaurant:
     type: text
+    influence_conversation: true
   payment_link:
     type: text
-
+    influence_conversation: true
 responses:
   utter_greet:
   - text: Hey! How are you?
-
-  utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
-    image: https://i.imgur.com/nGF1K8f.jpg
-
-  utter_did_that_help:
-  - text: Did that help you?
-
-  utter_happy:
-  - text: Great, carry on!
-
   utter_goodbye:
   - text: Bye
-
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-
   utter_wait:
   - text: I will contact the office rightaway. Please wait a moment.
-
-  # utter_water:
-  # - text: I, the bot, has contacted the office. Water will be delivered to your room soon
-
-  # utter_tissue:
-  # - text: Toilet papers will be delivered right away!
-
-  # utter_plastic_bag:
-  # - text: We will deliver the plastic bags soon
-
   utter_on_the_way:
   - text: I have contacted the office. The {request_item} will be delivered soon.
-
   utter_ask_restaurant:
-  - text: Which campus restaurant do you want to order from? 
-
+  - text: Which campus restaurant do you want to order from?
   utter_ask_dish:
   - text: Which dish do you want to order from the list? Input the number
- 
   utter_ask_drink:
   - text: Which drink do you want to order from the list? Input the number
-  
   utter_ask_payment_method:
   - text: Which payment_method do you want to order from the list?
-
   utter_slots_values:
   - text: |-
       Here's what you are ordering from {restaurant}:
@@ -95,14 +67,13 @@ responses:
       - Drink: {drink}
       You are paying with {payment_method}.
       Here's a link to the payment portal {payment_link}
-
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?
-
 actions:
-- action_submit_food_order
 - action_get_available_meals
-
+- action_submit_food_order
+- utter_ask_restaurant
+- utter_greet
 forms:
   food_order_form:
     dish:
@@ -114,7 +85,3 @@ forms:
     payment_method:
     - type: from_entity
       entity: payment_method
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true

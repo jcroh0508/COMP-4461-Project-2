@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Hello
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,7 +29,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -39,7 +37,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -49,48 +46,12 @@ nlu:
     - don't like that
     - no way
     - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: want_food
   examples: |
     - i want to order lunch
@@ -98,33 +59,31 @@ nlu:
     - want to eat dinner
     - want to eat breakfast
     - i am hungry
-
+    - I feel hungry
 - intent: give_restaurant
   examples: |
-    - I want to order from [LG1] (restaurant)
-    - I want to eat from [LG7] (restaurant)
-    - I want to eat some [Subway] (restaurant)
-    - I want to eat some [American Diner] (restaurant)
-    - I want to eat some [Ebeneezer's] (restaurant)
-
-
-
+    - [Subway](restaurant)
+    - [LG1](restaurant)
+    - I want to order from [LG1](restaurant)
+    - I want to eat from [LG7](restaurant)
+    - I want to eat some [Subway](restaurant)
+    - I want to eat some [American Diner](restaurant)
+    - I wish to eat some [Ebeneezer's](restaurant)
 - intent: inform
   examples: |
-    - [1] (dish)
-    - I want to get [2] (dish)
-    - will eat [4] (dish)
-    - order [3] (dish)
-    - [1] (drink)
-    - I want to get [2] (drink)
-    - will drink [4] (drink)
-    - order [3] (drink)
-    - [1] (payment_method)
-    - Pay with [FPS] (payment_method)
-    - pay by [credit card] (payment_method)
-    - use [Alipay] (payment_method)
-    - I want to pay by [wechat pay] (payment_method)
-
+    - [1](dish)
+    - I want to get [2](dish)
+    - will eat [4](dish)
+    - order [3](dish)
+    - [1](drink)
+    - I want to get [2](drink)
+    - will drink [4](drink)
+    - order [3](drink)
+    - [1](payment_method)
+    - Pay with [FPS](payment_method)
+    - pay by [credit card](payment_method)
+    - use [Alipay](payment_method)
+    - I want to pay by [wechat pay](payment_method)
 - intent: out_of_scope
   examples: |
     - that's not what I want to do
@@ -144,7 +103,6 @@ nlu:
     - nevermind
     - I want to do something else
     - I changed my mind
-
 - intent: thankyou
   examples: |
     - okay great thanks
@@ -152,33 +110,15 @@ nlu:
     - sure thanks
     - thanks bye
     - thanks
-
 - intent: already_paid
   examples: |
     - I just paid
     - I transferred the money
     - I paid for the food
-
 - intent: ask_when_deliver
   examples: |
     - When will the food arrive?
     - How long till the food arrives?
-
-# - intent: ask_water
-#   examples: |
-#     - I want more water
-#     - May I ask for more water?
-    
-# - intent: ask_tissue
-#   examples: |
-#     - I want more tissue paper
-#     - May I ask for more tissue papers?
-
-# - intent: ask_plastic_bag
-#   examples: |
-#     - I want more plastic bags
-#     - May I ask for more plastic bags?
-
 - intent: ask_for_item
   examples: |
     - I want a [plastic bag](request_item)
