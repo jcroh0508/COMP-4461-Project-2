@@ -18,6 +18,5 @@ rules:
   steps:
   - action: food_order_form
   - active_loop: null
-  - action: 
   - action: action_submit_food_order
   - action: utter_slots_values

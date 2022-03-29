@@ -39,7 +39,7 @@ slots:
   restaurant:
     type: text
   payment_link:
-    type: link
+    type: text
 
 responses:
   utter_greet:
@@ -76,7 +76,7 @@ responses:
   utter_on_the_way:
   - text: I have contacted the office. The {request_item} will be delivered soon.
 
-  utter_ask_restaurent:
+  utter_ask_restaurant:
   - text: Which campus restaurant do you want to order from? 
 
   utter_ask_dish:
@@ -101,15 +101,19 @@ responses:
 
 actions:
 - action_submit_food_order
-- utter_slots_values
 - action_get_available_meals
 
 forms:
   food_order_form:
-    required_slots:
-      - dish
-      - drink
-      - payment_method
+    dish:
+    - type: from_entity
+      entity: dish
+    drink:
+    - type: from_entity
+      entity: drink
+    payment_method:
+    - type: from_entity
+      entity: payment_method
 
 session_config:
   session_expiration_time: 60
