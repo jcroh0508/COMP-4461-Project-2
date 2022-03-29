@@ -3,6 +3,7 @@ version: "2.0"
 intents:
   - greet
   - want_food
+  - give_restaurant
   - inform
   - ask_when_deliver
   - thankyou
@@ -21,10 +22,24 @@ intents:
 
 entities:
 - request_item
+- restaurant
+- dish
+- drink
+- payment_method
 
 slots:
   request_item:
     type: text
+  dish:
+    type: text
+  drink:
+    type: text
+  payment_method:
+    type: text
+  restaurant:
+    type: text
+  payment_link:
+    type: link
 
 responses:
   utter_greet:
@@ -45,21 +60,57 @@ responses:
 
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  
+
   utter_wait:
   - text: I will contact the office rightaway. Please wait a moment.
-  
+
   # utter_water:
   # - text: I, the bot, has contacted the office. Water will be delivered to your room soon
-  
+
   # utter_tissue:
   # - text: Toilet papers will be delivered right away!
-  
+
   # utter_plastic_bag:
   # - text: We will deliver the plastic bags soon
 
   utter_on_the_way:
   - text: I have contacted the office. The {request_item} will be delivered soon.
+
+  utter_ask_restaurent:
+  - text: Which campus restaurant do you want to order from? 
+
+  utter_ask_dish:
+  - text: Which dish do you want to order from the list? Input the number
+ 
+  utter_ask_drink:
+  - text: Which drink do you want to order from the list? Input the number
+  
+  utter_ask_payment_method:
+  - text: Which payment_method do you want to order from the list?
+
+  utter_slots_values:
+  - text: |-
+      Here's what you are ordering from {restaurant}:
+      - Dish: {dish}
+      - Drink: {drink}
+      You are paying with {payment_method}.
+      Here's a link to the payment portal {payment_link}
+
+  utter_ask_continue:
+  - text: Sorry, I don't quite understand. Do you want to continue?
+
+actions:
+- action_submit_food_order
+- utter_slots_values
+- action_get_available_meals
+
+forms:
+  food_order_form:
+    required_slots:
+      - dish
+      - drink
+      - payment_method
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

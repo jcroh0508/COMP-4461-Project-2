@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Submit Food Order Form
+  condition:
+  - active_loop: food_order_form
+  steps:
+  - action: food_order_form
+  - active_loop: null
+  - action: 
+  - action: action_submit_food_order
+  - action: utter_slots_values
