@@ -1,23 +1,22 @@
 version: "2.0"
 
 intents:
-  - greet
-  - want_food
-  - inform
-  - ask_when_deliver
-  - thankyou
-  - out_of_scope
-  - already_paid
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - ask_for_item
-  # - ask_water
-  # - ask_tissue
-  # - ask_plastic_bag
+- express_boredom
+- affirm
+- numerical_guess
+- greet
+- want_food
+- inform
+- ask_when_deliver
+- thankyou
+- out_of_scope
+- already_paid
+- goodbye
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- ask_for_item
 
 entities:
 - request_item
@@ -25,6 +24,15 @@ entities:
 slots:
   request_item:
     type: text
+    influence_conversation: true
+  guessing_answer:
+    type: float
+    influence_conversation: true
+    max_value: 10.0
+    min_value: 0.0
+  guess:
+    type: text
+    influence_conversation: true
 
 responses:
   utter_greet:
@@ -45,21 +53,42 @@ responses:
 
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  
+
   utter_wait:
   - text: I will contact the office rightaway. Please wait a moment.
-  
+
   # utter_water:
   # - text: I, the bot, has contacted the office. Water will be delivered to your room soon
-  
+
   # utter_tissue:
   # - text: Toilet papers will be delivered right away!
-  
+
   # utter_plastic_bag:
   # - text: We will deliver the plastic bags soon
 
   utter_on_the_way:
   - text: I have contacted the office. The {request_item} will be delivered soon.
+
+  utter_guessing_game:
+  - text: Would you like to play a guessing game to pass the time?
+
+  utter_game_rules:
+  - text: Great! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
+
+  utter_ask_guessing_form_guess:
+  - text: Give me a guess!
+
+actions:
+- action_create_answer
+- utter_game_rules
+- utter_guessing_game
+- validate_guessing_form
+
+forms:
+  guessing_form:
+    guess:
+    - type: from_text
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

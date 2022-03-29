@@ -7,21 +7,48 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+from typing import Any, Text, Dict, List
+import random
+from rasa_sdk.events import SlotSet
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
+
+class ActionCreateAnswer(Action):
+    def name(self) -> Text:
+        return "action_create_answer"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        #dispatcher.utter_message(text="Guess a number!")
+
+        numbers = [1,2,3,4,5,6,7,8,9,10]
+        answer = random.choice(numbers)
+
+        return [SlotSet("guessing_answer",answer)]
+
+class ValidateGuess(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_guessing_form"
+
+    def validate_guess(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        model_answer = int(tracker.get_slot('guessing_answer'))
+        user_answer = slot_value
+
+        if(user_answer.isdigit()):
+            user_answer = int(user_answer)
+            if(user_answer==model_answer):
+                dispatcher.utter_message(text = "That is the correct answer!")
+                return{'guess': slot_value}
+            else:
+                dispatcher.utter_message(text = "That is incorrect.")
+                return{'guess': None}

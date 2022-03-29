@@ -104,7 +104,7 @@ nlu:
 # response like i want to eat (food), i ate (this)
   examples: |
     -
-    
+
 - intent: out_of_scope
   examples: |
     - that's not what I want to do
@@ -148,7 +148,7 @@ nlu:
 #   examples: |
 #     - I want more water
 #     - May I ask for more water?
-    
+
 # - intent: ask_tissue
 #   examples: |
 #     - I want more tissue paper
@@ -167,3 +167,26 @@ nlu:
     - I want [tissues](request_item)
     - I need more [tissue paper](request_item)
     - I need some [plastic bags](request_item)
+
+- intent: express_boredom
+  examples: |
+    - I'm bored
+    - I am bored
+    - I want something to do
+    - Can you entertain me?
+    - Entertainment please
+    - im bored
+
+- intent: numerical_guess
+  examples: |
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10

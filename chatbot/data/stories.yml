@@ -54,3 +54,16 @@ stories:
     - request_item: water
   - action: utter_wait
   - action: utter_on_the_way
+
+#- story: ask for a game path
+#  steps:
+#  - intent: express_boredom
+#  - action: utter_guessing_game
+#  - intent: affirm
+#  - action: utter_game_rules
+#  - action: action_create_answer
+#  - action: guessing_form
+#  - active_loop: guessing_form
+#  - slot_was_set:
+#    - requested_slot: null
+#  - active_loop: null
