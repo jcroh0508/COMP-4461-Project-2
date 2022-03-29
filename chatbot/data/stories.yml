@@ -1,175 +1,124 @@
 version: "2.0"
-nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - Hello
 
-- intent: goodbye
-  examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-    
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+stories:
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+- story: medical_help
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_for_medical_help
+  - action: utter_ask_symptoms
+  - intent: answer_symptoms
+  - action: utter_ask_scale
+  - intent: number_scale
+  - action: utter_request_testing
 
-- intent: want_food
-  examples: |
-    - i want to order lunch
-    - i want to have lunch
-    - want to eat dinner
-    - want to eat breakfast
-    - i am hungry
-    - I feel hungry
+- story: testing_result_positive
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: answer_result
+    entities:
+    - test_result: positive
+  - action: send_medicine
 
-- intent: give_restaurant
-  examples: |
-    - [Subway](restaurant)
-    - [LG1](restaurant)
-    - [LG7](restaurant)
-    - I want to order from [LG1](restaurant)
-    - I want to eat from [LG7](restaurant)
-    - I want to eat some [Subway](restaurant)
-    - I want to eat some [American Diner](restaurant)
-    - I wish to eat some [Ebeneezer's](restaurant)
+- story: testing_result_negative
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: answer_result
+    entities:
+    - test_result: negative
+  - action: relief
+  - action: send_medicine
 
-- intent: inform
-  examples: |
-    - [1](dish)
-    - I want to get [2](dish)
-    - will eat [4](dish)
-    - order [3](dish)
-    - [1](drink)
-    - I want to get [2](drink)
-    - will drink [4](drink)
-    - order [3](drink)
-    - [1](payment_method)
-    - Pay with [FPS](payment_method)
-    - pay by [credit card](payment_method)
-    - use [Alipay](payment_method)
-    - I want to pay by [wechat pay](payment_method)
+- story: ask for item path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_for_item
+    entities:
+    - request_item: water
+    - request_item: tissues
+    - request_item: tissue paper
+    - request_item: plastic bags
+  - action: utter_wait
+  - action: utter_on_the_way
 
-- intent: out_of_scope
-  examples: |
-    - that's not what I want to do
-    - wait stop
-    - you're no help
-    - this is no help at all
-    - how old are you
-    - I want to order a pizza
-    - tell me the weather
-    - this isn't working
-    - I already told you that
-    - don't like that
-    - I don't want to tell you that
-    - none of your business
-    - that's not right
-    - stop asking
-    - nevermind
-    - I want to do something else
-    - I changed my mind
+- story: food_order_happy_path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: want_food
+  - action: utter_ask_restaurant
+  - intent: give_restaurant
+  - action: action_get_available_meals
+  - action: food_order_form
+  - active_loop: food_order_form
 
-- intent: thankyou
-  examples: |
-    - okay great thanks
-    - thank you
-    - sure thanks
-    - thanks bye
-    - thanks
+- story: food_order_cancel
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: want_food
+  - action: utter_ask_restaurant
+  - intent: give_restaurant
+  - action: action_get_available_meals
+  - action: food_order_form
+  - active_loop: food_order_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_goodbye
 
-- intent: already_paid
-  examples: |
-    - I just paid
-    - I transferred the money
-    - I paid for the food
+- story: food_order_continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: want_food
+  - action: utter_ask_restaurant
+  - intent: give_restaurant
+  - action: action_get_available_meals
+  - action: food_order_form
+  - active_loop: food_order_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: food_order_form
 
-- intent: ask_when_deliver
-  examples: |
-    - When will the food arrive?
-    - How long till the food arrives?
-
-- intent: ask_for_item
-  examples: |
-    - I want a [plastic bag](request_item)
-    - I want more [water](request_item)
-    - May I ask for more [water](request_item)?
-    - I want [tissues](request_item)
-    - I need more [tissue paper](request_item)
-    - I need some [plastic bags](request_item)
-
-- intent: ask_medical_help
-  examples: |
-    - I feel like I am having some symptoms
-    - I am feeling sick
-    - Feeling sick
-    - feeling sick
-    - Not feeling well
-
-- intent: answer_symptoms
-  examples: |
-    - I am [coughing](symptoms)
-    - I have a [headache](symptoms)
-    - [headache](symptoms)
-    - I have a [sore throat](symptoms)
-    - [sore throat](symptoms)
-    - I have a [fever](symptoms)
-    - [fever](symptoms)
-
-- intent: answer_result
-  examples: |
-    - I am tested [positive](test_result)
-    - I am tested [negative](test_result)
-    - [positive](test_result)
-    - [negative](test_result)
-
-- intent: number_scale
-  examples: |
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
+- story: interactive_story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: want_food
+  - action: utter_ask_restaurant
+  - intent: give_restaurant
+    entities:
+    - restaurant: Subway
+  - slot_was_set:
+    - restaurant: Subway
+  - action: action_get_available_meals
+  - action: food_order_form
+  - active_loop: food_order_form
+  - slot_was_set:
+    - requested_slot: dish
+  - slot_was_set:
+    - dish: '1'
+  - slot_was_set:
+    - requested_slot: drink
+  - slot_was_set:
+    - dish: '2'
+  - slot_was_set:
+    - requested_slot: payment_method
+  - slot_was_set:
+    - dish: FPS
+  - active_loop: null
+  - action: action_submit_food_order
+  - action: utter_slots_values
