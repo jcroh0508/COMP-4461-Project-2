@@ -7,6 +7,36 @@ stories:
   - intent: greet
   - action: utter_greet
 
+- story: medical_help
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_for_medical_help
+  - action: utter_ask_symptoms
+  - intent: answer_symptoms
+  - action: utter_ask_scale
+  - intent: number_scale
+  - action: utter_request_testing
+
+- story: testing_result_positive
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: answer_result
+    entities:
+    - test_result: positive
+  - action: send_medicine
+
+- story: testing_result_negative
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: answer_result
+    entities:
+    - test_result: negative
+  - action: relief
+  - action: send_medicine
+
 - story: ask for item path
   steps:
   - intent: greet
@@ -14,6 +44,9 @@ stories:
   - intent: ask_for_item
     entities:
     - request_item: water
+    - request_item: tissues
+    - request_item: tissue paper
+    - request_item: plastic bags
   - action: utter_wait
   - action: utter_on_the_way
 
