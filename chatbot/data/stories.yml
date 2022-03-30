@@ -11,7 +11,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_for_medical_help
+  - intent: ask_medical_help
   - action: utter_ask_symptoms
   - intent: answer_symptoms
   - action: utter_ask_scale
