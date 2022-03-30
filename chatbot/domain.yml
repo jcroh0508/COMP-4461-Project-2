@@ -19,6 +19,10 @@ intents:
   - deny
   - bot_challenge
   - ask_for_item
+  - ask_medical_help
+  - answer_symptoms
+  - answer_result
+  - number_scale
 
 entities:
   - request_item
