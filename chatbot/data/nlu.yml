@@ -90,3 +90,38 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    
+   
+- intent: ask_medical_help
+  examples: |
+    - I feel like I am having some symptoms
+    - I am feeling sick
+    - Feeling sick
+    - feeling sick
+    - Not feeling well
+
+- intent: answer_symptoms
+  examples: |
+    - I am [coughing](symptoms)
+    - I have a [headache](symptoms)
+    - [headache](symptoms)
+    - I have a [sore throat](symptoms)
+    - [sore throat](symptoms)
+    - I have a [fever](symptoms)
+    - [fever](symptoms)
+
+- intent: answer_result
+  examples: |
+    - I am tested [positive](test_result)
+    - I am tested [negative](test_result)
+    - [positive](test_result)
+    - [negative](test_result)
+
+- intent: number_scale
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+
