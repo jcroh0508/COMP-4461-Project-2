@@ -27,7 +27,7 @@ class ActionCreateAnswer(Action):
         numbers = [1,2,3,4,5,6,7,8,9,10]
         answer = random.choice(numbers)
 
-        return [SlotSet("guessing_answer",answer)]
+        return [SlotSet("guessing_answer",answer),SlotSet("guess",None)]
 
 class ValidateGuess(FormValidationAction):
     def name(self) -> Text:

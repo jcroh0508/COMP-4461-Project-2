@@ -115,7 +115,7 @@ responses:
   - text: Would you like to play a guessing game to pass the time?
 
   utter_game_rules:
-  - text: Great! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
+  - text: Let's play a guessing game! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
 
   utter_ask_guessing_form_guess:
   - text: Give me a guess!
