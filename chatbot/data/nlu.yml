@@ -181,11 +181,14 @@ nlu:
     - I have a [fever](symptoms)
     - [fever](symptoms)
 
-- intent: answer_result
+- intent: answer_result_positive
   examples: |
     - I am tested [positive](test_result)
-    - I am tested [negative](test_result)
     - [positive](test_result)
+
+- intent: answer_result_negative
+  examples: |
+    - I am tested [negative](test_result)
     - [negative](test_result)
 
 - intent: number_scale
