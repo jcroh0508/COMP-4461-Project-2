@@ -21,9 +21,10 @@ intents:
   - ask_for_item
   - ask_medical_help
   - answer_symptoms
-  - answer_result
+  - answer_result_positive
+  - answer_result_negative
   - number_scale
-
+  
 entities:
   - request_item
   - dish
@@ -73,13 +74,10 @@ responses:
   - text: Hey! How are you?
   utter_goodbye:
   - text: Bye
-
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  
   utter_wait:
   - text: I will contact the office rightaway. Please wait a moment.
-
   utter_on_the_way:
   - text: I have contacted the office. The {request_item} will be delivered soon.
   utter_ask_restaurant:
@@ -99,41 +97,37 @@ responses:
       Here's a link to the payment portal {payment_link}
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?
-
   utter_ask_symptoms:
   - text: What are the symptoms you are currently having?
-
   utter_ask_scale:
   - text: Can you give me a scale from 1 to 5? (5 being the worst)
-
   utter_request_testing:
   - text: You may try the self testing kit again and you can tell me the result in 15 minutes.
-
-  relief:
+  utter_relief:
   - text: Phew. That is a relief. However, still monitor yourself for the next 3 days.
-
-  send_medicine:
-  - text: We will send you some medicines right away.
-
+  utter_send_medicine:
+  - text: The office will send you some medicines. Please do another testing in 5 days and let us know your result.
+  utter_still_send_medicine:
+  - text: We will still send you some medicines for your health.
   utter_guessing_game:
   - text: Would you like to play a guessing game to pass the time?
-
   utter_game_rules:
-  - text: Let's play a guessing game! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
-
+  - text: Great! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
   utter_ask_guessing_form_guess:
   - text: Give me a guess!
 
 actions:
-- action_get_available_meals
-- action_submit_food_order
-- utter_ask_restaurant
-- utter_greet
-- action_create_answer
-- utter_game_rules
-- utter_guessing_game
-- validate_guessing_form
-
+  - action_get_available_meals
+  - action_submit_food_order
+  - utter_ask_restaurant
+  - utter_greet
+  - action_create_answer
+  - utter_game_rules
+  - utter_guessing_game
+  - validate_guessing_form
+  - utter_relief
+  - utter_send_medicine
+  - utter_request_testing
 forms:
   food_order_form:
     dish:
