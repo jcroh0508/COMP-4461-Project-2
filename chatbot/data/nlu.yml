@@ -16,6 +16,7 @@ nlu:
     - goodevening
     - good afternoon
     - Hello
+    
 - intent: goodbye
   examples: |
     - good afternoon
@@ -29,6 +30,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    
 - intent: affirm
   examples: |
     - yes
@@ -37,6 +39,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    
 - intent: deny
   examples: |
     - no
@@ -46,12 +49,14 @@ nlu:
     - don't like that
     - no way
     - not really
+    
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    
 - intent: want_food
   examples: |
     - i want to order lunch
@@ -60,6 +65,7 @@ nlu:
     - want to eat breakfast
     - i am hungry
     - I feel hungry
+    
 - intent: give_restaurant
   examples: |
     - [Subway](restaurant)
@@ -69,6 +75,7 @@ nlu:
     - I want to eat some [Subway](restaurant)
     - I want to eat some [American Diner](restaurant)
     - I wish to eat some [Ebeneezer's](restaurant)
+    
 - intent: inform
   examples: |
     - [1](dish)
@@ -84,6 +91,7 @@ nlu:
     - pay by [credit card](payment_method)
     - use [Alipay](payment_method)
     - I want to pay by [wechat pay](payment_method)
+    
 - intent: out_of_scope
   examples: |
     - that's not what I want to do
@@ -103,6 +111,7 @@ nlu:
     - nevermind
     - I want to do something else
     - I changed my mind
+    
 - intent: thankyou
   examples: |
     - okay great thanks
@@ -110,15 +119,18 @@ nlu:
     - sure thanks
     - thanks bye
     - thanks
+    
 - intent: already_paid
   examples: |
     - I just paid
     - I transferred the money
     - I paid for the food
+    
 - intent: ask_when_deliver
   examples: |
     - When will the food arrive?
     - How long till the food arrives?
+    
 - intent: ask_for_item
   examples: |
     - I want a [plastic bag](request_item)
@@ -150,3 +162,37 @@ nlu:
     - 8
     - 9
     - 10
+
+- intent: ask_medical_help
+  examples: |
+    - I feel like I am having some symptoms
+    - I am feeling sick
+    - Feeling sick
+    - feeling sick
+    - Not feeling well
+
+- intent: answer_symptoms
+  examples: |
+    - I am [coughing](symptoms)
+    - I have a [headache](symptoms)
+    - [headache](symptoms)
+    - I have a [sore throat](symptoms)
+    - [sore throat](symptoms)
+    - I have a [fever](symptoms)
+    - [fever](symptoms)
+
+- intent: answer_result
+  examples: |
+    - I am tested [positive](test_result)
+    - I am tested [negative](test_result)
+    - [positive](test_result)
+    - [negative](test_result)
+
+- intent: number_scale
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+
