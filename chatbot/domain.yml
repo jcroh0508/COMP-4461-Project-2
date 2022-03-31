@@ -88,7 +88,7 @@ responses:
   utter_ask_drink:
   - text: Which drink do you want to order from the list?
   utter_ask_payment_method:
-  - text: Which payment_method do you want to order from the list?
+  - text: Which payment_method do you want to use?
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?
   utter_ask_symptoms:
