@@ -78,15 +78,15 @@ nlu:
     
 - intent: inform
   examples: |
-    - [1](dish)
     - I want to get [2](dish)
     - will eat [4](dish)
     - order [3](dish)
-    - [1](drink)
+    - buy [4](dish)
     - I want to get [2](drink)
     - will drink [4](drink)
     - order [3](drink)
-    - [1](payment_method)
+    - buy [4](drink)
+    - [FPS](payment_method)
     - Pay with [FPS](payment_method)
     - pay by [credit card](payment_method)
     - use [Alipay](payment_method)

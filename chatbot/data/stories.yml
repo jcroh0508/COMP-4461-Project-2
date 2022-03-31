@@ -92,14 +92,13 @@ stories:
   - slot_was_set:
     - requested_slot: drink
   - slot_was_set:
-    - dish: '2'
+    - drink: '2'
   - slot_was_set:
     - requested_slot: payment_method
   - slot_was_set:
-    - dish: FPS
+    - payment_method: FPS
   - active_loop: null
   - action: action_submit_food_order
-  - action: utter_slots_values
 
 - story: guessing_game
   steps:

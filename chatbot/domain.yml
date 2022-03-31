@@ -84,18 +84,11 @@ responses:
   utter_ask_restaurant:
   - text: Which campus restaurant do you want to order from?
   utter_ask_dish:
-  - text: Which dish do you want to order from the list? Input the number
+  - text: Which dish do you want to order from the list?
   utter_ask_drink:
-  - text: Which drink do you want to order from the list? Input the number
+  - text: Which drink do you want to order from the list?
   utter_ask_payment_method:
   - text: Which payment_method do you want to order from the list?
-  utter_slots_values:
-  - text: |-
-      Here's what you are ordering from {restaurant}:
-      - Dish: {dish}
-      - Drink: {drink}
-      You are paying with {payment_method}.
-      Here's a link to the payment portal {payment_link}
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?
   utter_ask_symptoms:

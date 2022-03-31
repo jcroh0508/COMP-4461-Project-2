@@ -7,12 +7,16 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
+from pdb import Restart
 from typing import Any, Text, Dict, List
 import random
 from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+
+dishes = [{"id": 1, "name": "rice"}, {"id": 2, "name": "pasta"}]
+drinks = [{"id": 1, "name": "tea"}, {"id": 2, "name": "coke"}]
 
 
 class ActionCreateAnswer(Action):
@@ -70,9 +74,6 @@ class ActionGetAvailableMeals(Action):
 
         # TODO: Get slot restaurant and filter returned meals by restaurant
 
-        dishes = [{"id": 1, "name": "rice"}, {"id": 2, "name": "pasta"}]
-        drinks = [{"id": 1, "name": "tea"}, {"id": 2, "name": "coke"}]
-
         message = "Dishes:\n"
         for dish in dishes:
             message += f'({dish.get("id")}) {dish.get("name")}\n'
@@ -103,6 +104,12 @@ class ActionSubmitFoodOrder(Action):
         drink = tracker.get_slot("drink")
         payment_method = tracker.get_slot("payment_method")
 
-        dispatcher.utter_message(text="Thanks. Your order has been received")
+        response = f"Here's what you are ordering from {restaurant}:\n"
+        response += f"- Dish: {dishes[0].get('name')}\n"
+        response += f"- Drink: {drinks[0].get('name')}\n"
+        response += f"You're paying with {payment_method}. Pay at https://example.com/\n"
+        response += f"Thanks. Your order has been received"
 
-        return [SlotSet("payment_link", "TODO")]
+        dispatcher.utter_message(text=response)
+
+        return []
