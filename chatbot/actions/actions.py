@@ -14,6 +14,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
+
 class ActionCreateAnswer(Action):
     def name(self) -> Text:
         return "action_create_answer"
@@ -24,10 +25,11 @@ class ActionCreateAnswer(Action):
 
         #dispatcher.utter_message(text="Guess a number!")
 
-        numbers = [1,2,3,4,5,6,7,8,9,10]
+        numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         answer = random.choice(numbers)
 
-        return [SlotSet("guessing_answer",answer),SlotSet("guess",None)]
+        return [SlotSet("guessing_answer", answer), SlotSet("guess", None)]
+
 
 class ValidateGuess(FormValidationAction):
     def name(self) -> Text:
@@ -46,11 +48,14 @@ class ValidateGuess(FormValidationAction):
 
         if(user_answer.isdigit()):
             user_answer = int(user_answer)
-            if(user_answer==model_answer):
-                dispatcher.utter_message(text = "That is the correct answer!")
+            if(user_answer == model_answer):
+                dispatcher.utter_message(text="That is the correct answer!")
                 return{'guess': slot_value}
+            elif user_answer < model_answer:
+                dispatcher.utter_message(text="Too low. Try again")
+                return{'guess': None}
             else:
-                dispatcher.utter_message(text = "That is incorrect.")
+                dispatcher.utter_message(text="Too high. Try again")
                 return{'guess': None}
 
 

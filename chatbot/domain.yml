@@ -34,6 +34,7 @@ entities:
   - payment_link
   - symptoms
   - test_result
+  - guess
 
 slots:
   request_item:
@@ -141,4 +142,5 @@ forms:
       entity: payment_method
   guessing_form:
     guess:
-    - type: from_text
+    - type: from_entity
+      entity: guess

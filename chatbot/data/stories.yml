@@ -100,3 +100,16 @@ stories:
   - active_loop: null
   - action: action_submit_food_order
   - action: utter_slots_values
+
+- story: guessing_game
+  steps:
+  - intent: express_boredom
+  - action: utter_game_rules
+  - action: action_create_answer
+  - action: guessing_form
+  - slot_was_set:
+    - requested_slot: guess
+  - slot_was_set:
+    - guess: 5
+  - active_loop: null
+  - action: validate_guessing_form

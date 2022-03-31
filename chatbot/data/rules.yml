@@ -21,16 +21,25 @@ rules:
   - action: action_submit_food_order
   - action: utter_slots_values
 
-- rule: Guessing game if the user is bored
+# - rule: Guessing game if the user is bored
+#   steps:
+#     - intent: express_boredom
+# #    - action: utter_guessing_game
+# #    - intent: affirm
+#     - action: utter_game_rules
+#     - action: action_create_answer
+#     - action: guessing_form
+#     - active_loop: guessing_form
+#     - slot_was_set:
+#         - requested_slot: null
+#     - active_loop: null
+
+- rule: Submit guess
+  condition:
+  - active_loop: guessing_form
   steps:
-    - intent: express_boredom
-#    - action: utter_guessing_game
-#    - intent: affirm
-    - action: utter_game_rules
-    - action: action_create_answer
-    - action: guessing_form
-    - active_loop: guessing_form
-    - slot_was_set:
-        - requested_slot: null
-    - active_loop: null
+  - action: guessing_form
+  - active_loop: null
+  - action: validate_guessing_form
+    
 
