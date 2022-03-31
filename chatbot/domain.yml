@@ -109,6 +109,8 @@ responses:
   - text: Great! Here are the rules. I'll think of number from 1-10, and you guess and see if you're correct!
   utter_ask_guessing_form_guess:
   - text: Give me a guess!
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
 
 actions:
   - action_get_available_meals
