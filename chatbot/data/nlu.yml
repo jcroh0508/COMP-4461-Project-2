@@ -16,6 +16,9 @@ nlu:
     - goodevening
     - good afternoon
     - Hello
+    - What's up?
+    - whatsup
+    - wassup
     
 - intent: goodbye
   examples: |
@@ -30,6 +33,8 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - thanks
+    - thanks goodbye
     
 - intent: affirm
   examples: |
